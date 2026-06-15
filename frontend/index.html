@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content = "width = device-width, inital-scale = 1.0">
+        <title>DevDoc Chat</title>
+        <style>
+            :root {
+                --ink : #1a1a2e;
+                --paper: #f4f1ea;
+                --accent: #e94560;
+                --line: #d8d2c4;
+            }
+            *{margin: 0; padding: 0; box-sizing: border-box; }
+            body{
+                font-family: 'Georgia',serif;
+                background: var(--paper);
+                color: var(--ink);
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 48px 24px;
+                line-height: 1.6;
+            }
+            h1{
+                font-size: 2.4rem;
+                letter-spacing: -0.02em;
+                border-bottom: 3px solid var(--ink);
+                padding-bottom: 12px;
+                margin-bottom: 8px;
+            }
+            .sub{font-style: italic; color: #6b6b6b; margin-bottom: 32px; }
+            .pannel{
+                border: 1px solid var(--line);
+                background: #fff;
+                padding: 20px;
+                margin-bottom: 24px;
+            }
+            .label{font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08rem; margin-bottom: 12px; display: block;}
+            input[type = "file"]{font-family: inherit; margin-bottom: 12px;}
+            input[type = "text"]{
+                width: 100%;
+                padding: 12px;
+                font-family: inherit;
+                font-size: 1rem;
+                border: 1px solid var(--line);
+                margin-bottom: 12px;
+            }
+            button{
+                background: var(--ink);
+                color: var(--paper);
+                border:none;
+                padding: 12px 24px;
+                font-family: inherit;
+                font-size: 0.95rem;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+            button:hover {background: var(--accent);}
+            #status, #answer {margin-top: 16px;}
+            #answer{
+                border-left: 3px solid var(--accent);
+                padding-left: 16px;
+                white-space: pre-wrap;
+                min-height: 24px;
+            }
+            .muted{ color: #999; font-style: italic;}
+        </style>
+    </head>
+    <body>
+        <h1>DevDoc Chat</h1>
+        <p class="sub">Upload a PDF and ask it anything.</p>
+
+        <div class="panel">
+            <span class="label">1-Upload a document</span>
+            <input type="file" id="fileInput" accept="application/pdf">
+            <button onclick="uploadFile()">Upload</button>
+            <div id="status" class="muted">No document uploaded yet.</div>
+        </div>
+    </body>
+</html>
