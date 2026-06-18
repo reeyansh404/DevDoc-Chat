@@ -120,9 +120,9 @@
             answer.textContent = "Thinking...";
 
             const res = await fetch(API + "/ask", {
-                method: POST,
-                headers: {"Content-Type": "applications/json"},
-                body: JSON.stringify({query:question})
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ query:question })
             });
             const data = await res.json();
             answer.textContent = data.answer;
