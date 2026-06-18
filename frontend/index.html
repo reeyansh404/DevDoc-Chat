@@ -84,4 +84,48 @@
             <div id="answer" class="muted">Your answer will appear here.</div>
         </div>
     </body>
+    <script>
+        const API = "http://localhost:8000"
+
+        async function uploadFile() {
+            const fileInput = document.getElementById("fileInput");
+            const status = document.getElementById("status");
+
+            if(!fileInput.files.length){
+                status.textContent = "Pick a PDF first.";
+                return;
+            }
+            const formData = new FormData();
+            formData.append("file",fileInput.files[0]);
+
+            status.textContent = "Uploading and processing...";
+
+            const res = await fetch(API + "/upload", {
+                method: "POST",
+                body: formData
+            });
+            const data = await res.json();
+            status.textContent = data.message + "(" + data.chunks + "chunks )";
+        }
+
+        async function askQuestion(){
+            const question = document.getElementById("questionInput").value;
+            const answer = document.getElementById("answer");
+
+            if(!question){
+                answer.textContent = "Type a question first!";
+                return;
+            }
+
+            answer.textContent = "Thinking...";
+
+            const res = await fetch(API + "/ask", {
+                method: POST,
+                headers: {"Content-Type": "applications/json"},
+                body: JSON.stringify({query:question})
+            });
+            const data = await res.json();
+            answer.textContent = data.answer;
+        }
+    </script>
 </html>
